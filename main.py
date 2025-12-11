@@ -1,19 +1,17 @@
-# Import
-from flask import Flask, render_template,request, redirect
-# Importing the database library
+# Importar
+from flask import Flask, render_template, request, redirect
+# Importando a biblioteca de banco de dados
 from flask_sqlalchemy import SQLAlchemy
 
 
 app = Flask(__name__)
-# Connecting SQLite
+# Conectando ao SQLite
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///diary.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-# Creating a DB
-db = SQLAlchemy(app )
+# Criando um Banco de Dados (DB)
+db = SQLAlchemy(app)
 
-#Assignment #1. Create a DB table
-
-
+# Tarefa #1. Criar uma tabela no Banco de Dados
 
 
 
@@ -23,11 +21,13 @@ db = SQLAlchemy(app )
 
 
 
-# Running the page with content
+
+
+# Executando a página com conteúdo
 @app.route('/')
 def index():
-    # Displaying the DB objects
-    # Assignment #2. Display the objects from the DB in index.html
+    # Exibindo os objetos do Banco de Dados
+    # Tarefa #2. Exibir os objetos do Banco de Dados no index.html
     
 
     return render_template('index.html',
@@ -35,20 +35,20 @@ def index():
 
                            )
 
-# Running the page with the card
+# Executando a página com o cartão
 @app.route('/card/<int:id>')
 def card(id):
-    # Assignment #2. Display the right card by its id
+    # Tarefa #2. Exibir o cartão correto pelo seu id
     
 
     return render_template('card.html', card=card)
 
-# Running the page and creating the card
+# Executando a página e criando o cartão
 @app.route('/create')
 def create():
     return render_template('create_card.html')
 
-# The card form
+# O formulário do cartão
 @app.route('/form_create', methods=['GET','POST'])
 def form_create():
     if request.method == 'POST':
@@ -56,7 +56,7 @@ def form_create():
         subtitle =  request.form['subtitle']
         text =  request.form['text']
 
-        # Assignment #2. Create a way to store data in the DB
+        # Tarefa #2. Criar uma forma de armazenar dados no Banco de Dados
         
 
 
